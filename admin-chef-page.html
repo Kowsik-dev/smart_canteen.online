@@ -1,0 +1,164 @@
+<!-- Admin Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        header { background-color: #333; color: #fff; padding: 10px 20px; text-align: center; }
+        .container { padding: 20px; }
+        .card { background-color: #fff; padding: 20px; margin: 20px auto; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px; text-align: center; }
+        .card h2 { font-size: 2rem; margin: 0; }
+        .card p { font-size: 1.2rem; color: #555; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="card">
+            <h2>Sold Items</h2>
+            <p>Total Amount: Rs. 0</p>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- Chef Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0;">
+    <title>Chef Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        header { background-color: #444; color: #fff; padding: 10px 20px; text-align: center; }
+        .container { padding: 20px; }
+        .task-list { background-color: #fff; padding: 20px; border-radius: 10px; margin: 20px auto; width: 350px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .task-list h2 { font-size: 1.8rem; }
+        .task-list ul { list-style-type: none; padding: 0; }
+        .task-list ul li { padding: 10px; background-color: #f9f9f9; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chef Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="task-list">
+            <h2>Pending Orders</h2>
+            <ul>
+                <li>Order 1: Idly - 2 plates</li>
+                <li>Order 2: Dosa - 1 plate</li>
+                <li>Order 3: Meals - 3 plates</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- Chef Dashboard Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chef Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #ff914d;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background-color: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #ff914d;
+      color: white;
+    }
+    button {
+      background-color: #ff914d;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e67e22;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chef Dashboard</h1>
+    <p>Manage Food Items & View Orders</p>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h2>Today's Orders</h2>
+      <table>
+        <tr>
+          <th>Order ID</th>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>#101</td>
+          <td>Veg Biryani</td>
+          <td>2</td>
+          <td>Pending</td>
+        </tr>
+      </table>
+    </div>
+    <div class="card">
+      <h2>Add New Menu Item</h2>
+      <label>Item Name:</label><br>
+      <input type="text" id="itemName"><br><br>
+      <label>Price:</label><br>
+      <input type="number" id="itemPrice"><br><br>
+      <button onclick="addMenuItem()">Add Item</button>
+    </div>
+  </div>
+  <script>
+    function addMenuItem() {
+      const name = document.getElementById('itemName').value;
+      const price = document.getElementById('itemPrice').value;
+      if (name && price) {
+        alert(`New item added: ${name} - ₹${price}`);
+      } else {
+        alert("Please enter both name and price");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Canteen System</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        background: linear-gradient(to bottom right, #ff8a80, #fce4ec);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .header {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+        color: white;
+        background: #ff6f61;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .login-box {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        text-align: center;
+        width: 350px;
+    }
+
+    .login-box h2 {
+        margin-bottom: 20px;
+        color: #ff6f61;
+    }
+
+    select, input, button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-top: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        background: #ff6f61;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #ff3d3d;
+        transform: scale(1.05);
+    }
+
+    .icon {
+        font-size: 45px;
+        color: #ff6f61;
+        margin-bottom: 10px;
+    }
+
+    #credentials {
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<div class="header">🍽 Welcome to Smart Canteen System</div>
+
+<div class="login-box">
+    <div class="icon">👨‍🍳</div>
+    <h2>Login</h2>
+
+    <label for="role">Select Role:</label>
+    <select id="role" onchange="toggleCredentials()">
+        <option value="User">User</option>
+        <option value="Admin">Admin</option>
+        <option value="Chef">Chef</option>
+    </select>
+
+    <div id="credentials">
+        <input type="text" id="userId" placeholder="Enter ID">
+        <input type="password" id="password" placeholder="Enter Password">
+    </div>
+
+    <button onclick="login()">Login</button>
+</div>
+
+<script>
+    function toggleCredentials() {
+        let role = document.getElementById('role').value;
+        let credentials = document.getElementById('credentials');
+
+        if (role === "Admin" || role === "Chef") {
+            credentials.style.display = "block";
+        } else {
+            credentials.style.display = "none";
+        }
+    }
+
+    function login() {
+  const role = document.getElementById('role').value;
+  
+  if (role === 'User') {
+    // redirect user directly to shop page
+    window.location.href = "index.html";  // change to your user shop/home page
+    return;
+  }
+
+  const id = document.getElementById('userId').value;
+  const pass = document.getElementById('password').value;
+
+  const demoCreds = {
+    Admin: { id: 'admin', pwd: 'Admin@123' },
+    Chef:  { id: 'chef',  pwd: 'Chef@123'  }
+  };
+
+  if (id === demoCreds[role].id && pass === demoCreds[role].pwd) {
+    // ✅ Redirect based on role
+    if (role === 'Admin') {
+      window.location.href = "admin_dashboard.html"; // change as needed
+    } else if (role === 'Chef') {
+      window.location.href = "admin-chef-page.html"; // change as needed
+    }
+  } else {
+    alert('Invalid ID or password ');
+  }
+}
+
+
+
+        
+    
+</script>
+
+</body>
+</html>

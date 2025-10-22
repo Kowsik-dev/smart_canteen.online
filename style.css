@@ -1,0 +1,247 @@
+/* ===== Body & Global Styles ===== */
+body {
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #333;
+}
+
+h1 {
+  background: linear-gradient(90deg, #ff6f61, #ff9a8b);
+  color: white;
+  padding: 25px 0;
+  margin: 0 0 25px 0;
+  font-size: 2.5em;
+  letter-spacing: 2px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ===== Category Buttons ===== */
+#category-buttons {
+  margin: 20px 0;
+}
+
+#category-buttons button {
+  background: linear-gradient(90deg, #ffca28, #ffc107);
+  color: #333;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 50px;
+  margin: 6px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+#category-buttons button:hover {
+  background: linear-gradient(90deg, #ffb300, #ffa000);
+  color: white;
+  transform: scale(1.08);
+}
+
+/* ===== Menu Grid ===== */
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 40px;
+  padding: 0 10px;
+}
+
+/* ===== Menu Item Cards ===== */
+.menu-item {
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  width: 210px;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.menu-item:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+.menu-item img {
+  width: 100%;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover img {
+  transform: scale(1.05);
+}
+
+.menu-item h3 {
+  margin: 12px 0 5px 0;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.menu-item .price {
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+}
+
+.menu-item button {
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.menu-item button:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Category Colors ===== */
+.menu-item.snacks {
+  background: linear-gradient(to bottom, #fff8e1, #ffe082);
+}
+.menu-item.snacks h3 { color: #ef6c00; }
+.menu-item.snacks .price { color: #bf360c; }
+.menu-item.snacks button { background-color: #ff9800; }
+.menu-item.snacks button:hover { background-color: #f57c00; }
+
+.menu-item.chaat {
+  background: linear-gradient(to bottom, #e8f5e9, #a5d6a7);
+}
+.menu-item.chaat h3 { color: #2e7d32; }
+.menu-item.chaat .price { color: #1b5e20; }
+.menu-item.chaat button { background-color: #43a047; }
+.menu-item.chaat button:hover { background-color: #2e7d32; }
+
+.menu-item.juice {
+  background: linear-gradient(to bottom, #fff3e0, #ffcc80);
+}
+.menu-item.juice h3 { color: #e65100; }
+.menu-item.juice .price { color: #bf360c; }
+.menu-item.juice button { background-color: #fb8c00; }
+.menu-item.juice button:hover { background-color: #ef6c00; }
+
+.menu-item.coffee {
+  background: linear-gradient(to bottom, #efebe9, #d7ccc8);
+}
+.menu-item.coffee h3 { color: #6d4c41; }
+.menu-item.coffee .price { color: #4e342e; }
+.menu-item.coffee button { background-color: #795548; }
+.menu-item.coffee button:hover { background-color: #5d4037; }
+
+/* ===== Cart Styles ===== */
+#cart {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+#cart li {
+  background-color: #e1bee7;
+  margin: 6px auto;
+  width: 320px;
+  padding: 10px;
+  border-radius: 12px;
+  color: #4a148c;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#cart li:hover {
+  background-color: #d1c4e9;
+}
+
+#total {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #d32f2f;
+  margin-bottom: 20px;
+}
+
+/* ===== Place Order Button ===== */
+button[onclick="placeOrder()"] {
+  background: linear-gradient(90deg, #ff7043, #f4511e);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+button[onclick="placeOrder()"]:hover {
+  background: linear-gradient(90deg, #f4511e, #e64a19);
+  transform: scale(1.08);
+}
+
+/* ===== Message ===== */
+#message {
+  font-weight: bold;
+  font-size: 1.15em;
+  margin-top: 15px;
+}
+
+/* ===== Links ===== */
+a {
+  text-decoration: none;
+  color: #0288d1;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+a:hover { color: #01579b; }
+
+/* ===== Placeholder Message ===== */
+#menu p {
+  font-style: italic;
+  color: #777;
+  margin-top: 50px;
+  font-size: 1.15em;
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 768px) {
+  .menu-grid {
+    gap: 15px;
+  }
+
+  .menu-item {
+    width: 160px;
+    padding: 12px;
+  }
+
+  #cart li {
+    width: 260px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .menu-item {
+    width: 140px;
+    padding: 10px;
+  }
+
+  #cart li {
+    width: 220px;
+  }
+
+  #category-buttons button {
+    padding: 10px 16px;
+    font-size: 0.9em;
+  }
+}
+

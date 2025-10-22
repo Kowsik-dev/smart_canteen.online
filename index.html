@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Canteen Ordering System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Smart Canteen Ordering System</h1>
+
+  <!-- Category Buttons -->
+  <div id="category-buttons">
+    <button onclick="filterMenu('Snacks')">Snacks</button>
+    <button onclick="filterMenu('Chaat Items')">Chaat Items</button>
+    <button onclick="filterMenu('Juices')">Juices</button>
+    <button onclick="filterMenu('Coffee & Tea')">Coffee & Tea</button>
+  </div>
+
+  <div id="menu" class="menu-grid">
+    <p style="text-align:center; color:gray;">🍽️ Please select a category to view items.</p>
+  </div>
+
+  <h2>Your Cart</h2>
+  <ul id="cart"></ul>
+  <p id="total">Total: ₹0</p>
+  <button onclick="placeOrder()">Place Order</button>
+
+  <p id="message"></p>
+  <p><a href="login.html">⬅ Back to Login</a></p>
+
+  <script>
+    const menuData = {
+      "Snacks": [
+        { item: "Burger", price: 50, img: "images/burger.jpg" },
+        { item: "Sandwich", price: 60, img: "images/sandwich.jpg" },
+        { item: "Noodles", price: 80, img: "images/noodles.jpg" },
+        { item: "Pizza", price: 100, img: "images/pizza.jpg" },
+        { item: "French Fries", price: 40, img: "images/fries.jpg" },
+        { item: "Paneer Tikka", price: 70, img: "images/paneertikka.jpg" },
+        { item: "Grilled Sandwich", price: 65, img: "images/grilledsandwich.jpg" },
+        { item: "Veg Wrap", price: 55, img: "images/vegwrap.jpg" }
+      ],
+      "Chaat Items": [
+        { item: "Pani Puri", price: 40, img: "images/panipuri.jpg" },
+        { item: "Bhel Puri", price: 45, img: "images/bhelpuri.jpg" },
+        { item: "Samosa", price: 25, img: "images/samosa.jpg" },
+        { item: "Dahi Puri", price: 50, img: "images/dahipuri.jpg" },
+        { item: "Sev Puri", price: 35, img: "images/sevpuri.jpg" },
+        { item: "Aloo Tikki", price: 30, img: "images/aloottiki.jpg" },
+        { item: "Corn Chaat", price: 40, img: "images/cornchaat.jpg" },
+        { item: "Papdi Chaat", price: 45, img: "images/papdichaat.jpg" }
+      ],
+      "Juices": [
+        { item: "Mango Juice", price: 35, img: "images/mangojuice.jpg" },
+        { item: "Orange Juice", price: 40, img: "images/orangejuice.jpg" },
+        { item: "Mixed Fruit Juice", price: 50, img: "images/mixedjuice.jpg" },
+        { item: "Apple Juice", price: 45, img: "images/applejuice.jpg" },
+        { item: "Watermelon Juice", price: 35, img: "images/watermelonjuice.jpg" },
+        { item: "Pineapple Juice", price: 50, img: "images/pineapplejuice.jpg" },
+        { item: "Carrot Juice", price: 40, img: "images/carrotjuice.jpg" },
+        { item: "Lemonade", price: 30, img: "images/lemonade.jpg" }
+      ],
+      "Coffee & Tea": [
+        { item: "Black Coffee", price: 30, img: "images/blackcoffee.jpg" },
+        { item: "Cold Coffee", price: 40, img: "images/coldcoffee.jpg" },
+        { item: "Masala Tea", price: 20, img: "images/tea.jpg" },
+        { item: "Green Tea", price: 25, img: "images/greentea.jpg" },
+        { item: "Milk Coffee", price: 35, img: "images/milkcoffee.jpg" },
+        { item: "Espresso", price: 50, img: "images/espresso.jpg" },
+        { item: "Cappuccino", price: 55, img: "images/cappuccino.jpg" },
+        { item: "Latte", price: 60, img: "images/latte.jpg" }
+      ]
+    };
+
+    let cart = [];
+    let total = 0;
+
+    function loadMenu(category) {
+      const menuDiv = document.getElementById("menu");
+      menuDiv.innerHTML = "";
+
+      menuData[category].forEach((m) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "menu-item";
+
+        // Add category class for color theme
+        if (category === "Snacks") itemDiv.classList.add("snacks");
+        else if (category === "Chaat Items") itemDiv.classList.add("chaat");
+        else if (category === "Juices") itemDiv.classList.add("juice");
+        else if (category === "Coffee & Tea") itemDiv.classList.add("coffee");
+
+        itemDiv.innerHTML = `
+          <img src="${m.img}" alt="${m.item}">
+          <h3>${m.item}</h3>
+          <p class="price">₹${m.price}</p>
+          <button onclick="addToCart('${m.item}', ${m.price})">Add to Cart</button>
+        `;
+        menuDiv.appendChild(itemDiv);
+      });
+    }
+
+    function filterMenu(category) {
+      loadMenu(category);
+    }
+
+    function addToCart(item, price) {
+      cart.push({ item, price });
+      total += price;
+      displayCart();
+    }
+
+    function displayCart() {
+      const cartList = document.getElementById("cart");
+      const totalDisplay = document.getElementById("total");
+      cartList.innerHTML = "";
+      cart.forEach((c) => {
+        const li = document.createElement("li");
+        li.textContent = `${c.item} - ₹${c.price}`;
+        cartList.appendChild(li);
+      });
+      totalDisplay.textContent = `Total: ₹${total}`;
+    }
+
+    function placeOrder() {
+      const message = document.getElementById("message");
+      if (cart.length === 0) {
+        message.textContent = "Your cart is empty!";
+        message.style.color = "red";
+        return;
+      }
+      message.textContent = "✅ Order placed successfully!";
+      message.style.color = "green";
+      cart = [];
+      total = 0;
+      displayCart();
+    }
+  </script>
+</body>
+</html>
